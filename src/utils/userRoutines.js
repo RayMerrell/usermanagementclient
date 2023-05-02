@@ -2,7 +2,7 @@ import { writeCookie, getCookie } from "./cookieCode";
 
 export const getUserByID = async (id, token) => {
   try {
-    const response = await fetch("http://localhost:5000/users/getUserData/" + id, {
+    const response = await fetch("http://127.0.0.1:5000/users/getUserData/" + id, {
       mode: "cors",
       method: "GET",
       headers: {
@@ -19,7 +19,7 @@ export const getUserByID = async (id, token) => {
 };
 export const loginUser = async (userName, password) => {
   try {
-    const response = await fetch("http://localhost:5000/users/login", {
+    const response = await fetch("http://127.0.0.1:5000/users/login", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -42,7 +42,7 @@ export const loginUser = async (userName, password) => {
 export const registerUser = async (userName, password, admin) => {
   try {
     console.log("Gonna fetch");
-    const response = await fetch("http://localhost:5000/users/register", {
+    const response = await fetch("http://127.0.0.1:5000/users/register", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -68,7 +68,7 @@ export const registerUser = async (userName, password, admin) => {
 export const deleteUser = async (id, token) => {
   try {
     console.log("Gonna fetch");
-    const response = await fetch("http://localhost:5000/users/deleteuser", {
+    const response = await fetch("http://127.0.0.1:5000/users/deleteuser", {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -90,7 +90,7 @@ export const deleteUser = async (id, token) => {
 
 export const verifyUser = async (jwtToken) => {
   try {
-    const response = await fetch("http://localhost:5000/users/verifyUser", {
+    const response = await fetch("http://127.0.0.1:5000/users/verifyUser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export const verifyUser = async (jwtToken) => {
 export const authenticateUser = async (token) => {
   try {
     console.log("Authenticate user Fetch");
-    const response = await fetch("http://localhost:5000/users/authCheck", {
+    const response = await fetch("http://127.0.0.1:5000/users/authCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -144,7 +144,7 @@ export const updateUser = async (
       "password": password,
       "administrator": administrator,
     });
-    const response = await fetch("http://localhost:5000/users/updateUser", {
+    const response = await fetch("http://127.0.0.1:5000/users/updateUser", {
       method: "PUT",
       headers: headers,
       body: body,
@@ -162,7 +162,7 @@ export const updateUser = async (
 
 export const getUserList = async (jwtToken) => {
   try {
-    const response = await fetch("http://localhost:5000/users/getUserList", {
+    const response = await fetch("http://127.0.0.1:5000/users/getUserList", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
