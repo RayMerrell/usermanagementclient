@@ -1,5 +1,4 @@
 import ListGroup from "react-bootstrap/ListGroup";
-import UserData from "./UserData";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { UserState } from "../context/context";
@@ -41,15 +40,25 @@ function UserList() {
     (async () => {
       const userData = await getUserList(getCookie("JWT_Token"));
       console.log("UserList", userData.userList);
-      userData.userList.sort(function(a, b){
-        let x = a.userName.toLowerCase();
-        let y = b.userName.toLowerCase();
-        if (x < y) {return -1;}
-        if (x > y) {return 1;}
-        return 0;
-      })
-      //console.log("Sorted List", sortedList);
-      setUserList(userData.userList);
+      if (!userData.userList) {
+        setWelcomeMessage("No permissions");
+        setUserList([]);
+      } else {
+        userData.userList.sort(function (a, b) {
+          let x = a.userName.toLowerCase();
+          let y = b.userName.toLowerCase();
+          if (x < y) {
+            return -1;
+          }
+          if (x > y) {
+            return 1;
+          }
+          return 0;
+        });
+        //console.log("Sorted List", sortedList);
+        setUserList(userData.userList);
+      }
+
       setBusy(false);
     })();
     return () => {
